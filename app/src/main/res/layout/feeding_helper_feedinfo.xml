@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ui.home.feed.fragment.Fragment_feed_feedinginfo">
+
+    <TableLayout
+        android:id="@+id/feeding_alram_table"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="*"
+        >
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"/>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="7"
+                android:textAlignment="center"
+                android:layout_marginLeft="1dp"
+                android:layout_marginBottom="1dp"
+                android:text="피딩시간"
+                android:textSize="25dp"
+                android:padding="3dp"
+                android:background="@color/gray"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:textAlignment="center"
+                android:layout_marginLeft="1dp"
+                android:layout_marginBottom="1dp"
+                android:text="공급량"
+                android:textSize="25dp"
+                android:padding="3dp"
+                android:background="@color/gray"/>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

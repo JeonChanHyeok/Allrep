@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "599035533912",
+    "project_id": "allrep-f0765",
+    "storage_bucket": "allrep-f0765.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599035533912:android:9e6d76352b6554f1cdc82d",
+        "android_client_info": {
+          "package_name": "com.example.allrep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "599035533912-gp5pmac3h21r7961vvd122gc475mh4pp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD73GIBB8FOtip51vU9_q5d6BxJBbkDp9w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599035533912-gp5pmac3h21r7961vvd122gc475mh4pp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

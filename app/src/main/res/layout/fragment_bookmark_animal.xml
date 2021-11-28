@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/bookmark_animal_img"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/bookmark_animal_name"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="이름"/>
+            <TextView
+                android:id="@+id/bookmark_animal_jong"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="종"/>
+            <TextView
+                android:id="@+id/bookmark_animal_birth"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="년도"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

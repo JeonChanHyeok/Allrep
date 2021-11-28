@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Allrep</string>
+    <string name="title_home">홈</string>
+    <string name="title_bookmark">즐겨찾기</string>
+    <string name="title_community">커뮤니티</string>
+    <string name="title_option">설정</string>
+</resources>

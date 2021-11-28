@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/login_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="41dp"
+            android:ems="10"
+            android:hint="ID를 입력해주세요"
+            android:inputType="textWebEditText"
+            app:layout_constraintBottom_toTopOf="@+id/login_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/login_pw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="41dp"
+            android:ems="10"
+            android:hint="PW를 입력해주세요"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/login_pw2"
+            app:layout_constraintStart_toStartOf="@+id/login_id" />
+
+        <EditText
+            android:id="@+id/login_pw2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="41dp"
+            android:ems="10"
+            android:hint="한번더 PW를 입력해주세요"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/login_button"
+            app:layout_constraintStart_toStartOf="@+id/login_pw" />
+
+        <EditText
+            android:id="@+id/login_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="41dp"
+            android:ems="10"
+            android:hint="닉네임을 입력해주세요"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/login_button"
+            app:layout_constraintStart_toStartOf="@+id/login_pw2" />
+
+        <Button
+            android:id="@+id/join_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="190dp"
+            android:text="가입"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/login_password" />
+
+    </LinearLayout>
+
+</LinearLayout>

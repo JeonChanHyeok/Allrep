@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.home.feed.Fragment_feed"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/feed_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="90">
+    </ListView>
+    <Button
+        android:id="@+id/feed_ok"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:layout_gravity="center"
+        android:text="피딩 완료">
+
+    </Button>
+
+</LinearLayout>
