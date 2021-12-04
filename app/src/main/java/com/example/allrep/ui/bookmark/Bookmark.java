@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,12 +18,10 @@ import com.example.allrep.ui.bookmark.share.Fragment_share_animal_list;
 public class Bookmark extends Fragment {
     Fragment_share_animal_info fragment_share_animal_info;
     Fragment_share_animal_list fragment_share_animal_list;
-    private BookmarkViewModel dashboardViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(BookmarkViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_bookmark, container, false);
         Button share_btn = (Button)root.findViewById(R.id.share_btn);
         fragment_share_animal_list = new Fragment_share_animal_list();

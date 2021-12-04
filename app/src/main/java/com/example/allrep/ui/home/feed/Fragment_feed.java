@@ -23,8 +23,15 @@ public class Fragment_feed extends Fragment {
 
         ListView animal_list = (ListView) rootView.findViewById(R.id.feed_list);
         Button button = (Button)rootView.findViewById(R.id.feed_ok);
+        Button add = (Button)rootView.findViewById(R.id.add_animal);
         Intent intent = new Intent(this.getActivity(), Feeding_helper.class);
 
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -14,7 +14,7 @@
         android:gravity="center">
 
         <EditText
-            android:id="@+id/login_id"
+            android:id="@+id/join_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="41dp"
@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/login_pw"
+            android:id="@+id/join_pw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="41dp"
@@ -37,7 +37,7 @@
             app:layout_constraintStart_toStartOf="@+id/login_id" />
 
         <EditText
-            android:id="@+id/login_pw2"
+            android:id="@+id/join_pw2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="41dp"
@@ -47,16 +47,6 @@
             app:layout_constraintBottom_toTopOf="@+id/login_button"
             app:layout_constraintStart_toStartOf="@+id/login_pw" />
 
-        <EditText
-            android:id="@+id/login_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="41dp"
-            android:ems="10"
-            android:hint="닉네임을 입력해주세요"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/login_button"
-            app:layout_constraintStart_toStartOf="@+id/login_pw2" />
 
         <Button
             android:id="@+id/join_button"

@@ -20,14 +20,12 @@ import com.example.allrep.ui.community.fragment_commu.Fragment_community_text;
 
 public class Community extends Fragment {
 
-    private CommunityViewModel notificationsViewModel;
     Fragment_community_list fragment_community_list;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(CommunityViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_community, container, false);
         fragment_community_list = new Fragment_community_list();
         getFragmentManager().beginTransaction().replace(R.id.community_container,fragment_community_list).commit();
