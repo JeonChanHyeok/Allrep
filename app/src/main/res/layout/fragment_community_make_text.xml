@@ -28,9 +28,15 @@
     <EditText
         android:id="@+id/contentstext"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="500dp"
         android:text="내용을 입력해주세요."
         android:background="@drawable/edgeline"
         android:layout_margin="5dp"/>
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/make_text_button"
+        android:text="저장"
+        android:textSize="20dp"/>
 </LinearLayout>
