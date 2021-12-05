@@ -52,7 +52,6 @@ public class Login_Activity extends AppCompatActivity {
                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                             String key = postSnapshot.getKey();
                             HashMap<String, Object> userInfo = (HashMap<String, Object>) postSnapshot.getValue();
-                            Log.d("data",userInfo.toString());
                             String[] getData = {userInfo.get("userId").toString(), userInfo.get("userPs").toString()
                             , userInfo.get("share").toString(), userInfo.get("alram").toString()};
                             if (getData[0].equals(getId) && getData[1].equals(getPs)) {
@@ -66,11 +65,10 @@ public class Login_Activity extends AppCompatActivity {
                                 startActivity(intent_main);
                                 mDBReference.removeEventListener(this);
                                 finish();
-                            } else{
-                                Toast.makeText(Login_Activity.this, "로그인 실패!", Toast.LENGTH_SHORT).show();
+                                return;
                             }
                         }
-
+                        Toast.makeText(Login_Activity.this, "로그인 실패!", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

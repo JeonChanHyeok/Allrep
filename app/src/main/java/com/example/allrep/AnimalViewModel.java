@@ -11,15 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalViewModel extends ViewModel {
-    private final List<MutableLiveData<Animalinfo>> animals = new ArrayList<MutableLiveData<Animalinfo>>();
+    List<Animalinfo> animal_list = new ArrayList<Animalinfo>();
+    private final MutableLiveData<List<Animalinfo>> animals = new MutableLiveData<List<Animalinfo>>();
 
     public void addAnimal(Animalinfo info){
-        MutableLiveData<Animalinfo> temp = new MutableLiveData<Animalinfo>();
-        temp.setValue(info);
-        animals.add(temp);
+        animal_list.add(info);
+        animals.setValue(animal_list);
     }
 
-    public List<MutableLiveData<Animalinfo>> getAnimals(){
+    public LiveData<List<Animalinfo>> getAnimals(){
         return animals;
     }
 }

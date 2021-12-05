@@ -9,6 +9,8 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.allrep.LoginViewModel;
 import com.example.allrep.R;
@@ -25,6 +27,10 @@ public class Fragment_community_list extends Fragment {
     private LoginViewModel loginViewModel;
     Userinfo user;
     List<Commuinfo> text_list;
+    Button make_text;
+    Button my_text;
+    Button combtn;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -32,15 +38,8 @@ public class Fragment_community_list extends Fragment {
         fragment_community_make = new Fragment_community_make();
         fragment_community_text = new Fragment_community_text();
 
-        Button make_text = (Button)root.findViewById(R.id.newcomunity);
-        Button combtn = (Button)root.findViewById(R.id.community_btn);
-
-        combtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.community_container,fragment_community_text).commit();
-            }
-        });
+        make_text = (Button)root.findViewById(R.id.newcomunity);
+        my_text = (Button)root.findViewById(R.id.mycomunity);
 
         make_text.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,5 +49,19 @@ public class Fragment_community_list extends Fragment {
         });
 
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loginViewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
+        loginViewModel.getLoginedId().observe(getViewLifecycleOwner(), new Observer<Userinfo>() {
+            @Override
+            public void onChanged(Userinfo s) {
+                user = s;
+                make_text.setEnabled(true);
+                my_text.setEnabled(true);
+            }
+        });
     }
 }

@@ -25,6 +25,8 @@ public class Fragment_community_make extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_community_make_text, container, false);
 
+
+
         return root;
     }
 
