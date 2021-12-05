@@ -26,6 +26,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
+
 
 public class Add_Animal extends AppCompatActivity {
     String id;
@@ -88,7 +90,6 @@ public class Add_Animal extends AppCompatActivity {
                 String imgName = id + "/" + get_an + ".jpg";
 
                 Animalinfo animal = new Animalinfo(id, get_an, get_aa, get_aj, imgName,get_afd, get_afg, get_ag, get_awe);
-
                 StorageReference riverRdf = stref.child("animal_imgs/"+imgName);
                 UploadTask uploadTask = riverRdf.putFile(uri);
                 uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

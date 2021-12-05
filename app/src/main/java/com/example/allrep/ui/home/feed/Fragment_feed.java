@@ -14,19 +14,25 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.allrep.AnimalViewModel;
 import com.example.allrep.LoginViewModel;
 import com.example.allrep.R;
+import com.example.allrep.userinfo.Animalinfo;
 import com.example.allrep.userinfo.Userinfo;
+
+import java.util.List;
 
 public class Fragment_feed extends Fragment {
     private LoginViewModel loginViewModel;
+    private AnimalViewModel animalViewModel;
     Userinfo user;
+    List<Animalinfo> animals;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_home_feed,container,false);
 
-        ListView animal_list = (ListView) rootView.findViewById(R.id.feed_list);
+        ListView animal_list_view = (ListView) rootView.findViewById(R.id.feed_list);
         Button button = (Button)rootView.findViewById(R.id.feed_ok);
         Button add = (Button)rootView.findViewById(R.id.add_animal);
         Intent intent = new Intent(this.getActivity(), Add_Animal.class);
@@ -38,6 +44,9 @@ public class Fragment_feed extends Fragment {
                 startActivity(intent);
             }
         });
+        //for(Animalinfo i : animals){
+
+        //}
         /*button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +66,13 @@ public class Fragment_feed extends Fragment {
             @Override
             public void onChanged(Userinfo s) {
                 user = s;
+            }
+        });
+        animalViewModel = new ViewModelProvider(requireActivity()).get(AnimalViewModel.class);
+        animalViewModel.getAnimals().observe(getViewLifecycleOwner(), new Observer<List<Animalinfo>>() {
+            @Override
+            public void onChanged(List<Animalinfo> animalinfos) {
+                animals = animalinfos;
             }
         });
     }
