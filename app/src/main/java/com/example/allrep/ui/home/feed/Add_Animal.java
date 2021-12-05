@@ -3,6 +3,7 @@ package com.example.allrep.ui.home.feed;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,7 +56,6 @@ public class Add_Animal extends AppCompatActivity {
                 Intent temp = new Intent(Intent.ACTION_GET_CONTENT);
                 temp.setType("image/*");
                 startActivityForResult(temp,0);
-
             }
         });
         EditText animal_name = (EditText)findViewById(R.id.add_feeding_animal_name);
@@ -90,6 +90,10 @@ public class Add_Animal extends AppCompatActivity {
                 String imgName = id + "/" + get_an + ".jpg";
 
                 Animalinfo animal = new Animalinfo(id, get_an, get_aa, get_aj, imgName,get_afd, get_afg, get_ag, get_awe);
+                if (uri == null) {
+                    String appName = getResources().getResourceName(R.drawable.snake);
+                    uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.snake);
+                }
                 StorageReference riverRdf = stref.child("animal_imgs/"+imgName);
                 UploadTask uploadTask = riverRdf.putFile(uri);
                 uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
