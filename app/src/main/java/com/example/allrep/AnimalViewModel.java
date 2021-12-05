@@ -22,4 +22,8 @@ public class AnimalViewModel extends ViewModel {
     public LiveData<List<Animalinfo>> getAnimals(){
         return animals;
     }
+
+    public void resetAnimals(){
+        animal_list.clear();
+    }
 }
