@@ -29,7 +29,6 @@
         android:id="@+id/contentstext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="500dp"
         android:text="내용을 입력해주세요."
         android:background="@drawable/edgeline"
         android:layout_margin="5dp"/>
