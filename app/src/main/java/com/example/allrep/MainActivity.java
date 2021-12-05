@@ -2,17 +2,24 @@ package com.example.allrep;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 
+import com.bumptech.glide.Glide;
 import com.example.allrep.ui.home.HomeFragment;
 import com.example.allrep.userinfo.Animalinfo;
 import com.example.allrep.userinfo.Userinfo;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private AnimalViewModel animalViewModel;
     DatabaseReference mDBReference = null;
     boolean isLogin;
-    String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,9 +65,11 @@ public class MainActivity extends AppCompatActivity {
         if (isLogin){
             loginViewModel.logined(user);
             mDBReference = FirebaseDatabase.getInstance().getReference();
+
             mDBReference.child("/Animal_info/").child(user.userId).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    animalViewModel.resetAnimals();
                     for (DataSnapshot postSnapshot : snapshot.getChildren()){
                         HashMap<String, Object> animalInfo = (HashMap<String, Object>) postSnapshot.getValue();
 
@@ -71,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
                                 , animalInfo.get("feeding_gram").toString(), animalInfo.get("userName").toString()
                                 , animalInfo.get("whatEat").toString()};
 
+
                         Animalinfo animal = new Animalinfo(getData[7], getData[0], Integer.parseInt(getData[2])
                                                             , getData[1], getData[4], Integer.parseInt(getData[5])
                                                             , Integer.parseInt(getData[6]), Integer.parseInt(getData[3])
                                                             , getData[8]);
-
                         animalViewModel.addAnimal(animal);
                     }
                 }
@@ -90,4 +98,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 }

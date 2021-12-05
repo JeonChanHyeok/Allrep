@@ -108,12 +108,13 @@ public class Add_Animal extends AppCompatActivity {
                         String value = snapshot.getValue(String.class);
                         if(value != null){
                             Toast.makeText(Add_Animal.this, "이미 추가된 동물 입니다!", Toast.LENGTH_SHORT).show();
-                            return ;
+                            return;
                         }else{
                             mDBReference.child("/Animal_info/").child(id).child(get_an).setValue(animal).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(Add_Animal.this, "추가완료!", Toast.LENGTH_SHORT).show();
+                                    finish();
                                 }
                             });
                         }
