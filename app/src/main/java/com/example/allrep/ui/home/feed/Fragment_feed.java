@@ -25,6 +25,7 @@ import java.util.List;
 public class Fragment_feed extends Fragment {
     private LoginViewModel loginViewModel;
     private AnimalViewModel animalViewModel;
+    private ListView mListView;
     Userinfo user;
     List<Animalinfo> animals;
     @Nullable
@@ -32,7 +33,7 @@ public class Fragment_feed extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_home_feed,container,false);
 
-        ListView animal_list_view = (ListView) rootView.findViewById(R.id.feed_list);
+        mListView = (ListView) rootView.findViewById(R.id.feed_list);
         Button button = (Button)rootView.findViewById(R.id.feed_ok);
         Button add = (Button)rootView.findViewById(R.id.add_animal);
         Intent intent = new Intent(this.getActivity(), Add_Animal.class);
@@ -73,6 +74,11 @@ public class Fragment_feed extends Fragment {
             @Override
             public void onChanged(List<Animalinfo> animalinfos) {
                 animals = animalinfos;
+                Feed_list_adapter adapter = new Feed_list_adapter();
+                for(Animalinfo i : animals){
+                    adapter.mItems.add(i);
+                }
+                mListView.setAdapter(adapter);
             }
         });
     }

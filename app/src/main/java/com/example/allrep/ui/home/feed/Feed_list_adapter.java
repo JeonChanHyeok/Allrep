@@ -15,7 +15,7 @@ import com.example.allrep.userinfo.Animalinfo;
 import java.util.ArrayList;
 
 public class Feed_list_adapter extends BaseAdapter {
-    private ArrayList<Animalinfo> mItems = new ArrayList<>();
+    public ArrayList<Animalinfo> mItems = new ArrayList<>();
 
     @Override
     public int getCount(){
