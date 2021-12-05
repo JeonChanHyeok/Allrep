@@ -10,11 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.allrep.LoginViewModel;
 import com.example.allrep.R;
+import com.example.allrep.commuinfo.Commuinfo;
+import com.example.allrep.userinfo.Userinfo;
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.List;
 
 public class Fragment_community_list extends Fragment {
     Fragment_community_make fragment_community_make;
     Fragment_community_text fragment_community_text;
+    DatabaseReference mDBReference = null;
+    private LoginViewModel loginViewModel;
+    Userinfo user;
+    List<Commuinfo> text_list;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

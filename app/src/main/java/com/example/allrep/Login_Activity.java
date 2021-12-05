@@ -44,37 +44,33 @@ public class Login_Activity extends AppCompatActivity {
                 String getId = login_id.getText().toString();
                 String getPs = login_ps.getText().toString();
 
-                mDBReference.addValueEventListener(new ValueEventListener() {
+                mDBReference.child("/User_info/").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // This method is called once with the initial value and again
                         // whenever data at this location is updated.
-                        try {
-                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                                String key = postSnapshot.getKey();
-                                HashMap<String, HashMap<String, Object>> userInfo = (HashMap<String, HashMap<String, Object>>) postSnapshot.getValue();
-                                String[] getData = {userInfo.get(getId).get("userId").toString(), userInfo.get(getId).get("userPs").toString()
-                                , userInfo.get(getId).get("share").toString(), userInfo.get(getId).get("alram").toString()};
-                                if (getData[1].equals(getPs)) {
-                                    Toast.makeText(Login_Activity.this, "로그인완료!", Toast.LENGTH_SHORT).show();
-                                    intent_main.putExtra("isLogin", true);
-                                    intent_main.putExtra("userId", getData[0]);
-                                    intent_main.putExtra("userPw", getData[1]);
-                                    intent_main.putExtra("share", Integer.parseInt(getData[2]));
-                                    intent_main.putExtra("alram", Integer.parseInt(getData[3]));
-                                    ma.finish();
-                                    startActivity(intent_main);
-                                    mDBReference.removeEventListener(this);
-                                    finish();
-                                } else{
-                                    Toast.makeText(Login_Activity.this, "비밀번호 틀림!", Toast.LENGTH_SHORT).show();
-                                    return;
-                                }
+                       for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                            String key = postSnapshot.getKey();
+                            HashMap<String, Object> userInfo = (HashMap<String, Object>) postSnapshot.getValue();
+                            Log.d("data",userInfo.toString());
+                            String[] getData = {userInfo.get("userId").toString(), userInfo.get("userPs").toString()
+                            , userInfo.get("share").toString(), userInfo.get("alram").toString()};
+                            if (getData[0].equals(getId) && getData[1].equals(getPs)) {
+                                Toast.makeText(Login_Activity.this, "로그인완료!", Toast.LENGTH_SHORT).show();
+                                intent_main.putExtra("isLogin", true);
+                                intent_main.putExtra("userId", getData[0]);
+                                intent_main.putExtra("userPw", getData[1]);
+                                intent_main.putExtra("share", Integer.parseInt(getData[2]));
+                                intent_main.putExtra("alram", Integer.parseInt(getData[3]));
+                                ma.finish();
+                                startActivity(intent_main);
+                                mDBReference.removeEventListener(this);
+                                finish();
+                            } else{
+                                Toast.makeText(Login_Activity.this, "로그인 실패!", Toast.LENGTH_SHORT).show();
                             }
-                        }catch (NullPointerException e){
-                            Toast.makeText(Login_Activity.this, "아이디를 찾을 수 없음!", Toast.LENGTH_SHORT).show();
-                            return;
                         }
+
                     }
 
                     @Override
