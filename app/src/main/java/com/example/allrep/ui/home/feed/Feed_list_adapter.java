@@ -49,7 +49,7 @@ public class Feed_list_adapter extends BaseAdapter {
 
         //iv_img.setImageDrawable(myItem.animalImg);
         animal_name.setText(myItem.animalName);
-        animal_weight.setText(myItem.animalWheight);
+        //animal_weight.setText(myItem.animalWheight);
 
         return convertView;
     }
