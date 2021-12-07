@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.allrep.R;
 
-
 public class Fragment_dic extends Fragment {
     Fragment_dic_animal_info fragment_dic_animal_info;
     @Nullable

@@ -22,6 +22,7 @@
                     android:id="@+id/text_home"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:text="@string/app_name"
                     android:textSize="40dp"
                     android:textAlignment="center"
                     android:layout_weight="8"/>
