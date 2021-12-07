@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/activity_login.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/activity_main.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/activity_register.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/feeding_helper_animal.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/feeding_helper_animal_add.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/feeding_helper_animalinfo.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/feeding_helper_feedinfo.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_bookmark.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_bookmark_animal.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_bookmark_list.xml" value="0.2111111111111111" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_community_list_text.xml" value="0.375" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_community_make_text.xml" value="0.375" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_home.xml" value="0.2111111111111111" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_home_dic.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_home_dic_animalinfo.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_home_feed.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_homg_feed_list.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_option.xml" value="0.5536458333333333" />
+        <entry key="..\:/Users/recom211/Desktop/coding test/android/Allrep/app/src/main/res/layout/fragment_community.xml" value="0.151268115942029" />
+        <entry key="..\:/Users/recom211/Desktop/coding test/android/Allrep/app/src/main/res/layout/fragment_community_list_text.xml" value="0.13858695652173914" />
+        <entry key="..\:/Users/recom211/Desktop/coding test/android/Allrep/app/src/main/res/layout/fragment_community_listitem.xml" value="0.13858695652173914" />
+        <entry key="..\:/Users/recom211/Desktop/coding test/android/Allrep/app/src/main/res/layout/fragment_community_make_text.xml" value="0.13858695652173914" />
+        <entry key="..\:/Users/recom211/Desktop/coding test/android/Allrep/app/src/main/res/layout/fragment_community_text.xml" value="0.151268115942029" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

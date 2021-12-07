@@ -1,10 +1,18 @@
 package com.example.allrep.ui.community.fragment_commu;
 
+import android.app.LauncherActivity;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,8 +24,15 @@ import com.example.allrep.LoginViewModel;
 import com.example.allrep.R;
 import com.example.allrep.commuinfo.Commuinfo;
 import com.example.allrep.userinfo.Userinfo;
+import com.example.allrep.userinfo.communityinfo;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Fragment_community_list extends Fragment {
@@ -30,6 +45,8 @@ public class Fragment_community_list extends Fragment {
     Button make_text;
     Button my_text;
     Button combtn;
+    ListView listView;
+    Listitemadapter adapter;
 
     @Nullable
     @Override
@@ -37,14 +54,48 @@ public class Fragment_community_list extends Fragment {
         View root = inflater.inflate(R.layout.fragment_community_list_text, container, false);
         fragment_community_make = new Fragment_community_make();
         fragment_community_text = new Fragment_community_text();
-
         make_text = (Button)root.findViewById(R.id.newcomunity);
         my_text = (Button)root.findViewById(R.id.mycomunity);
-
         make_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager().beginTransaction().replace(R.id.community_container,fragment_community_make).commit();
+            }
+        });
+
+        listView = root.findViewById(R.id.community_listview);
+        adapter = new Listitemadapter();
+
+        mDBReference = FirebaseDatabase.getInstance().getReference();
+
+        mDBReference.child("/community_info/").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    String key = snapshot.getKey();
+                    HashMap<String, Object> writedata = (HashMap<String, Object>) data.getValue();
+                    //System.out.println(writedata);
+                    String[] getData = {writedata.get("number").toString(), writedata.get("userName").toString(), writedata.get("wirtetitle").toString()};
+                    //System.out.println(getData);
+                    String number = getData[0];
+                    int numberA = Integer.parseInt(number);
+                    String title = getData[1];
+                    String name = getData[2];
+                    adapter.addItem(numberA, title, name);
+                }
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
             }
         });
 
@@ -64,4 +115,57 @@ public class Fragment_community_list extends Fragment {
             }
         });
     }
+
+    public class Listitemadapter extends BaseAdapter{
+        ArrayList<communityinfo> item = new ArrayList<communityinfo>();
+        Context context;
+
+        @Override
+        public int getCount() {
+            return item.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return item.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            Context context = parent.getContext();
+
+            if(convertView == null){
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.fragment_community_listitem,parent,false);
+            }
+            // 번호 : writenumberA 제목 : writetitleA 작성자 : writerA
+            TextView number = (TextView) convertView.findViewById(R.id.writenumberA);
+            TextView title = (TextView) convertView.findViewById(R.id.writetitleA);
+            TextView writer = (TextView) convertView.findViewById(R.id.writerA);
+
+            communityinfo items = (communityinfo) getItem(position);
+
+            number.setText(Integer.toString(items.getNumber()));
+            title.setText(items.getUserName());
+            writer.setText(items.getWirtetitle());
+
+            return convertView;
+        }
+        public void addItem(int number, String title, String writer){
+            communityinfo mItem = new communityinfo();
+
+            mItem.setNumber(number);
+            mItem.setWirtetitle(title);
+            mItem.setUserName(writer);
+
+            item.add(mItem);
+        }
+    }
 }
+
+
