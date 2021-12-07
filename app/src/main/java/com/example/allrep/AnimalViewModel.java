@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.allrep.userinfo.Animalinfo;
+import com.example.allrep.userinfo.Feedinginfo;
 import com.example.allrep.userinfo.Userinfo;
 
 import java.util.ArrayList;
@@ -23,7 +24,10 @@ public class AnimalViewModel extends ViewModel {
         return animals;
     }
 
+    public List<Animalinfo> getAnimalList(){return animal_list;};
+
     public void resetAnimals(){
         animal_list.clear();
+        animals.setValue(null);
     }
 }

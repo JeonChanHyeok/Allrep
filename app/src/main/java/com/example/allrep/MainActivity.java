@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
                     animalViewModel.resetAnimals();
                     for (DataSnapshot postSnapshot : snapshot.getChildren()){
                         HashMap<String, Object> animalInfo = (HashMap<String, Object>) postSnapshot.getValue();
-
                         String[] getData = {animalInfo.get("animalName").toString(), animalInfo.get("animalJong").toString()
                                 , animalInfo.get("animalAge").toString(), animalInfo.get("animalWheight").toString()
                                 , animalInfo.get("animalImg").toString(), animalInfo.get("feeding_day").toString()
@@ -86,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                                                             , getData[8]);
                         animalViewModel.addAnimal(animal);
                     }
+                    mDBReference.removeEventListener(this);
                 }
 
                 @Override

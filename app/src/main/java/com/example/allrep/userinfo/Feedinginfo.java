@@ -1,27 +1,36 @@
 package com.example.allrep.userinfo;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.List;
 
 public class Feedinginfo {
-    String userName;
-    String animalName;
-    String animalImg;
-    String feedingDate;
+    public String userName;
+    public String animalName;
+    public int feeding_year;
+    public int feeding_month;
+    public int feeding_day;
+    public int i;
 
-    public Feedinginfo(String userName, String animalName, String animalImg, String feedingDate) {
+    public Feedinginfo(int i, String userName, String animalName, int feeding_year, int feeding_month, int feeding_day) {
+        List<Integer> month = Arrays.asList(new Integer[]{1,3,5,7,8,10,12});
+        if (month.contains(feeding_month)) {
+            if(feeding_day > 31){
+                feeding_day -= 31;
+            }
+        }else{
+            if(feeding_day > 30){
+                feeding_day -= 30;
+            }
+        }
+        if(feeding_month > 12){
+            feeding_month -= 12;
+        }
+        this.i = i;
         this.userName = userName;
         this.animalName = animalName;
-        this.animalImg = animalImg;
-        this.feedingDate = feedingDate;
+        this.feeding_year = feeding_year;
+        this.feeding_month = feeding_month;
+        this.feeding_day = feeding_day;
     }
 
-    public Map<String, Object> toMap(){
-        HashMap<String, Object> result = new HashMap<>();
-        result.put(userName, "userName");
-        result.put(animalName, "animalName");
-        result.put(animalImg, "animalImg");
-        result.put(feedingDate, "feedingDate");
-        return result;
-    }
 }

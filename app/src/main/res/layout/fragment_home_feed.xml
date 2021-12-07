@@ -10,7 +10,8 @@
         android:id="@+id/feed_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="90">
+        android:layout_weight="90"
+        android:choiceMode="multipleChoice">
     </ListView>
     <Button
         android:layout_width="wrap_content"
