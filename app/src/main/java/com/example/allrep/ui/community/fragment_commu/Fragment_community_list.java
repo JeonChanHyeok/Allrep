@@ -82,8 +82,10 @@ public class Fragment_community_list extends Fragment {
                     String title = getData[1];
                     String name = getData[2];
                     adapter.addItem(numberA, title, name);
+                    adapter.notifyDataSetChanged();
                 }
                 listView.setAdapter(adapter);
+
             }
 
             @Override
@@ -95,7 +97,11 @@ public class Fragment_community_list extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                int thrownumber = adapter.item.get(position).number;
+                Bundle bundle = new Bundle();
+                bundle.putInt("thrownumber",thrownumber);
+                fragment_community_text.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.community_container,fragment_community_text).commit();
             }
         });
 

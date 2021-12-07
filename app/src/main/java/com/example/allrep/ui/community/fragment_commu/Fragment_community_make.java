@@ -43,12 +43,12 @@ public class Fragment_community_make extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_community_make_text, container, false);
         fragment_community_list = new Fragment_community_list();
-
         mDBReference = FirebaseDatabase.getInstance().getReference();
         EditText writeheadtext = (EditText) root.findViewById(R.id.writeheadtext);
         EditText contentstext = (EditText) root.findViewById(R.id.contentstext);
         Button btn = root.findViewById(R.id.make_text_button);
 
+        // DB내용 number userName wirtetitle writecontent
         //numberdata 찾기
         mDBReference.child("/community_info/").addValueEventListener(new ValueEventListener() {
             @Override

@@ -73,12 +73,14 @@
                     android:id="@+id/remove_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="글 삭제"/>
+                    android:text="글 삭제"
+                    android:enabled="false"/>
                 <Button
                     android:id="@+id/remake_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="글 수정"/>
+                    android:text="글 수정"
+                    android:enabled="false"/>
                 <Button
                     android:id="@+id/add_bookmark"
                     android:layout_width="wrap_content"
