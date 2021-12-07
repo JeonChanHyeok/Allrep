@@ -6,8 +6,8 @@ import java.util.Map;
 public class Userinfo {
     public String userId;
     public String userPs;
-    public int share;
-    public int alram;
+    public int share; // 공유 제한
+    public int alram; // 알람 여부
 
     public Userinfo(){
     }

@@ -9,7 +9,7 @@ public class Animalinfo {
     public int animalAge;
     public String animalJong;
     public String animalImg;
-    public int feeding_day;
+    public int feeding_day; //피딩 주기
     public int feeding_gram;
     public int animalWheight;
     public String whatEat;

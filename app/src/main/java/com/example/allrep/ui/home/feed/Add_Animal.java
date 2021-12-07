@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.allrep.R;
 import com.example.allrep.userinfo.Animalinfo;
+import com.example.allrep.userinfo.Feedinginfo;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +29,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class Add_Animal extends AppCompatActivity {
@@ -113,11 +118,26 @@ public class Add_Animal extends AppCompatActivity {
                             mDBReference.child("/Animal_info/").child(id).child(get_an).setValue(animal).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
+                                    Date time = Calendar.getInstance().getTime();
+                                    SimpleDateFormat get_year = new SimpleDateFormat("yyyyy", Locale.getDefault());
+                                    SimpleDateFormat get_month = new SimpleDateFormat("MM", Locale.getDefault());
+                                    SimpleDateFormat get_day = new SimpleDateFormat("dd", Locale.getDefault());
+
+                                    int year = Integer.parseInt(get_year.format(time));
+                                    int month = Integer.parseInt(get_month.format(time));
+                                    int day = Integer.parseInt(get_day.format(time));
+
+                                    Feedinginfo feedinginfo;
+                                    for(int i=0; i < 10 ;i ++){
+                                        feedinginfo= new Feedinginfo(i, id, get_an ,year, month, (day + i * animal.feeding_day));
+                                        mDBReference.child("/Fedding_time_info/").child(id).child(get_an).child(Integer.toString(i)).setValue(feedinginfo);
+                                    }
                                     Toast.makeText(Add_Animal.this, "추가완료!", Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
                             });
                         }
+                        mDBReference.removeEventListener(this);
                     }
 
                     @Override

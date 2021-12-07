@@ -36,15 +36,6 @@ public class Fragment_community_make extends Fragment {
 
 
 
-        /*save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mDBReference.child("/Commu_info/").get
-                Commuinfo commuinfo = new Commuinfo(user.userId, )
-            }
-        });*/
-
-
         return root;
     }
 
