@@ -36,7 +36,7 @@ public class Fragment_community_make extends Fragment {
     Userinfo user = new Userinfo();
     communityinfo commuinfo = null;
 
-    int numberdata = 1;
+    int numberdata = 0;
 
     @Nullable
     @Override
@@ -55,14 +55,17 @@ public class Fragment_community_make extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data : snapshot.getChildren()) {
                     String key = data.getKey();
-                    HashMap<String, Object> userInfo = (HashMap<String, Object>) data.getValue();
-                    String getdata = userInfo.get("number").toString();
+                    HashMap<String, Object> DBdata = (HashMap<String, Object>) data.getValue();
+                    String getdata = DBdata.get("number").toString();
                     //System.out.println(getdata);
                     //System.out.println("---------print");
-                    numberdata = Integer.parseInt(getdata);
-                    numberdata++;
+                    int number = Integer.parseInt(getdata);
+                    if (numberdata < number ){
+                        numberdata = number;
+                    }
                     //System.out.println(numberdata);
                 }
+                numberdata++;
             }
 
             @Override
@@ -86,6 +89,9 @@ public class Fragment_community_make extends Fragment {
                     public void onSuccess(Void unused) {
                         // System.out.println(user.userId);
                         Toast.makeText(root.getContext(), "작성완료!", Toast.LENGTH_SHORT).show();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("mycommu", 1);
+                        fragment_community_list.setArguments(bundle);
                         getFragmentManager().beginTransaction().replace(R.id.community_container,fragment_community_list).commit();
                     }
                 });

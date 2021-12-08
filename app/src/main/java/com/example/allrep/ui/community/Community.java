@@ -28,6 +28,9 @@ public class Community extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_community, container, false);
         fragment_community_list = new Fragment_community_list();
+        Bundle bundle = new Bundle();
+        bundle.getBundle("mycommu");
+        fragment_community_list.setArguments(bundle);
         getFragmentManager().beginTransaction().replace(R.id.community_container,fragment_community_list).commit();
         return root;
     }
