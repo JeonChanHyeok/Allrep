@@ -3,11 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/916/StudioProjects/Allrep/app/src/main/res/layout/fragment_home_dic.xml" value="0.321875" />
-        <entry key="..\:/Users/916/StudioProjects/Allrep/app/src/main/res/layout/fragment_home_dic_animalinfo.xml" value="0.2421875" />
-        <entry key="..\:/Users/916/StudioProjects/Allrep/app/src/main/res/layout/fragment_home_dic_text.xml" value="0.321875" />
-        <entry key="..\:/Users/916/StudioProjects/Allrep/app/src/main/res/layout/fragment_home_feed.xml" value="0.321875" />
-        <entry key="..\:/Users/916/StudioProjects/Allrep/app/src/main/res/layout/fragment_homg_feed_list.xml" value="0.321875" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/activity_login.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/activity_main.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/activity_register.xml" value="0.5536458333333333" />
@@ -29,7 +24,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
