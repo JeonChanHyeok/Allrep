@@ -84,7 +84,8 @@ public class Fragment_community_make extends Fragment {
 
                 commuinfo = new communityinfo(writehead, contents, user.userId, numberdata);
 
-                mDBReference.child("/community_info/").child(Integer.toString(numberdata)).setValue(commuinfo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                mDBReference.child("/community_info/").child(Integer.toString(numberdata)).setValue(commuinfo).
+                        addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         // System.out.println(user.userId);

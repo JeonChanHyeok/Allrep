@@ -82,6 +82,7 @@ public class Fragment_community_list extends Fragment {
 
         System.out.println(mycomm);
 
+        // 자신의 글 보기
         if (mycomm == 0){
             mycomunitybtn.setText("전체글보기");
             mDBReference.child("/community_info/").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -91,7 +92,8 @@ public class Fragment_community_list extends Fragment {
                         String key = snapshot.getKey();
                         HashMap<String, Object> writedata = (HashMap<String, Object>) data.getValue();
                         //System.out.println(writedata);
-                        String[] getData = {writedata.get("number").toString(), writedata.get("userName").toString(), writedata.get("wirtetitle").toString()};
+                        String[] getData = {writedata.get("number").toString(), writedata.get("userName").toString(),
+                                            writedata.get("wirtetitle").toString()};
                         //System.out.println(getData);
                         String number = getData[0];
                         int numberA = Integer.parseInt(number);
@@ -110,6 +112,7 @@ public class Fragment_community_list extends Fragment {
                 }
             });
         }
+        // 전체 글 보기
         else if (mycomm == 1) {
             mycomunitybtn.setText("내글보기");
             mDBReference.child("/community_info/").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -119,7 +122,8 @@ public class Fragment_community_list extends Fragment {
                         String key = snapshot.getKey();
                         HashMap<String, Object> writedata = (HashMap<String, Object>) data.getValue();
                         //System.out.println(writedata);
-                        String[] getData = {writedata.get("number").toString(), writedata.get("userName").toString(), writedata.get("wirtetitle").toString()};
+                        String[] getData = {writedata.get("number").toString(), writedata.get("userName").toString(),
+                                            writedata.get("wirtetitle").toString()};
                         //System.out.println(getData);
                         String number = getData[0];
                         int numberA = Integer.parseInt(number);
@@ -136,13 +140,10 @@ public class Fragment_community_list extends Fragment {
                 }
             });
         }
-        // 검색으로 치자
+        // 검색 글 보기
         else if (mycomm == 2) {
             // 찾기 버튼 searchbutton  찾기 텍스트 search_view
             // 검색부분
-            System.out.println(searchdata);
-            System.out.println(mycomm);
-            System.out.println("-------");
             mDBReference.child("/community_info/").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -150,7 +151,8 @@ public class Fragment_community_list extends Fragment {
                         String key = snapshot.getKey();
                         HashMap<String, Object> writedata = (HashMap<String, Object>) data.getValue();
                         //System.out.println(writedata);
-                        String[] getData = {writedata.get("number").toString(), writedata.get("userName").toString(), writedata.get("wirtetitle").toString()};
+                        String[] getData = {writedata.get("number").toString(), writedata.get("userName").toString(),
+                                            writedata.get("wirtetitle").toString()};
                         //System.out.println(getData);
                         String number = getData[0];
                         int numberA = Integer.parseInt(number);
@@ -205,6 +207,8 @@ public class Fragment_community_list extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.community_container,fragment_community_list).commit();
             }
         });
+
+        // 검색부분 서치부분 + 바뀌는 번들부분 넘기기
         searchbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -276,6 +280,7 @@ public class Fragment_community_list extends Fragment {
 
             return convertView;
         }
+
         public void addItem(int number, String title, String writer){
             communityinfo mItem = new communityinfo();
 

@@ -67,16 +67,13 @@ public class Fragment_community_text extends Fragment {
                 for (DataSnapshot DBdata : snapshot.getChildren()) {
                     String key = DBdata.getKey();
                     HashMap<String, Object> cummdata = (HashMap<String, Object>) DBdata.getValue();
-                    String[] getData = {cummdata.get("number").toString(), cummdata.get("userName").toString(), cummdata.get("wirtetitle").toString(), cummdata.get("writecontent").toString()};
+                    String[] getData = {cummdata.get("number").toString(), cummdata.get("userName").toString(),
+                                cummdata.get("wirtetitle").toString(), cummdata.get("writecontent").toString()};
                     String number = getData[0];
                     int numberB = Integer.parseInt(number);
                     name = getData[1];
                     String title = getData[2];
                     String content = getData[3];
-                    //System.out.println(user.userId);
-                    //System.out.println(name);
-                    //System.out.println(numberA);
-                    //System.out.println(numberB);
 
                     // text_title 타이틀 text_user_name 유저네임 community_text 내용 text_num 텍스트번호
                     if (numberA == numberB){
@@ -102,6 +99,7 @@ public class Fragment_community_text extends Fragment {
 
             }
         });
+
         // 게시글 삭제
         remove_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +111,8 @@ public class Fragment_community_text extends Fragment {
                         for (DataSnapshot DBdata : snapshot.getChildren()) {
                             String key = DBdata.getKey();
                             HashMap<String, Object> cummdata = (HashMap<String, Object>) DBdata.getValue();
-                            String[] getData = {cummdata.get("number").toString(), cummdata.get("userName").toString(), cummdata.get("wirtetitle").toString(), cummdata.get("writecontent").toString()};
+                            String[] getData = {cummdata.get("number").toString(), cummdata.get("userName").toString(),
+                                        cummdata.get("wirtetitle").toString(), cummdata.get("writecontent").toString()};
                             String number = getData[0];
                             int numberB = Integer.parseInt(number);
                             if (numberA == numberB){
@@ -129,6 +128,7 @@ public class Fragment_community_text extends Fragment {
                 });
             }
         });
+
         // 게시글 변경부분
         remake_btn.setOnClickListener(new View.OnClickListener() {
             @Override

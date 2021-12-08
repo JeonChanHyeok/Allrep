@@ -59,7 +59,8 @@ public class Fragment_community_remake extends Fragment {
                 for (DataSnapshot DBdata : snapshot.getChildren()) {
                     String key = DBdata.getKey();
                     HashMap<String, Object> cummdata = (HashMap<String, Object>) DBdata.getValue();
-                    String[] getData = {cummdata.get("number").toString(), cummdata.get("userName").toString(), cummdata.get("wirtetitle").toString(), cummdata.get("writecontent").toString()};
+                    String[] getData = {cummdata.get("number").toString(), cummdata.get("userName").toString(),
+                                    cummdata.get("wirtetitle").toString(), cummdata.get("writecontent").toString()};
                     // 가져오는 순서 0:숫자 1:유저 2:제목 3:내용
                     String number = getData[0];
                     int numberdata = Integer.parseInt(number);
@@ -86,7 +87,8 @@ public class Fragment_community_remake extends Fragment {
 
                 commuinfo = new communityinfo(rewritehead, recontents, user.userId, remakenumber);
 
-                mDBReference.child("/community_info/").child(Integer.toString(remakenumber)).setValue(commuinfo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                mDBReference.child("/community_info/").child(Integer.toString(remakenumber)).setValue(commuinfo).
+                            addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Bundle bundle = new Bundle();
