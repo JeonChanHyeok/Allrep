@@ -12,11 +12,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.allrep.R;
+import com.example.allrep.ui.home.feed.GlideApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 
@@ -41,8 +44,10 @@ public class Fragment_dic_animal_info extends Fragment {
         mImage = (ImageView) rootView.findViewById(R.id.dic_animal_img);
         mText_small = (TextView)rootView.findViewById(R.id.dic_animal_sub_explain);
         mText_large = (TextView)rootView.findViewById(R.id.dic_animal_explain);
-
-
+        FirebaseStorage storage;
+        storage = FirebaseStorage.getInstance("gs://allrep-f0765.appspot.com/");
+        StorageReference storageRef = storage.getReference("dic_images").child(animalName + ".jpg");
+        GlideApp.with(this).load(storageRef).into(mImage);
 
 
         mDBReference.child("/Dic_info/").child(middle_title).child(small_title).addValueEventListener(new ValueEventListener() {
@@ -57,9 +62,9 @@ public class Fragment_dic_animal_info extends Fragment {
                     if(getData[1].equals(animalName)){
                         name.setText(getData[1]);
                         StringBuilder smallstr = new StringBuilder();
-                        smallstr.append("\n"+"생물명 : " + getData[1] + "\n"+"\n");
-                        smallstr.append("학명 : " + getData[7] + "\n"+"\n");
-                        smallstr.append("평균 크기 : " + getData[6] + "\n"+"\n");
+                        smallstr.append("\n"+"  생물명 : " + getData[1] + "\n"+"\n");
+                        smallstr.append("  학명 : " + getData[7] + "\n"+"\n");
+                        smallstr.append("  평균 크기 : " + getData[6] + "\n"+"\n");
                         mText_small.setText(smallstr);
                         StringBuilder bigstr = new StringBuilder();
                         bigstr.append("특징 : " + getData[4] + "\n"+"\n");
