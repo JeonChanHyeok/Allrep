@@ -3,9 +3,6 @@ package com.example.allrep.userinfo;
 public class Dicinfo {
     public String dic_big;
     public String animalName;
-    public String animalAge;
-    public String animalJong;
-    public String animalImg;
 
     public String getDic_big() {
         return dic_big;

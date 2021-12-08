@@ -24,9 +24,6 @@ import java.util.ArrayList;
 public class Fragment_dic_adapter1 extends BaseAdapter {
     public ArrayList<String> mItems = new ArrayList<>();
 
-
-
-
     @Override
     public int getCount(){
         return mItems.size();
@@ -54,19 +51,11 @@ public class Fragment_dic_adapter1 extends BaseAdapter {
         FirebaseStorage storage;
         storage = FirebaseStorage.getInstance("gs://allrep-f0765.appspot.com/");
 
-
-
-
         TextView dic1 = (TextView) convertView.findViewById(R.id.dic_text);
-
 
         String myItem =  getItem(position);
 
-        // Download directly from StorageReference using Glide
-        // (See MyAppGlideModule for Loader registration)
         dic1.setText(myItem);
-
-
 
         return convertView;
     }

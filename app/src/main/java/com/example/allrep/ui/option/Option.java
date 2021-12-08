@@ -35,7 +35,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Option extends Fragment {
-
     private LoginViewModel loginViewModel;
     TextView userID;
     EditText userPW;
@@ -61,12 +60,9 @@ public class Option extends Fragment {
         r2 = (RadioButton)root.findViewById(R.id.radioButton2);
         r3 = (RadioButton)root.findViewById(R.id.radioButton3);
 
-
         ch1 = (CheckBox)root.findViewById(R.id.checkBox1);
         ch2 = (CheckBox)root.findViewById(R.id.checkBox2);
         save_btn = (Button)root.findViewById(R.id.save_option);
-
-
 
         shareGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -84,9 +80,6 @@ public class Option extends Fragment {
                 }
             }
         });
-
-
-
         save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

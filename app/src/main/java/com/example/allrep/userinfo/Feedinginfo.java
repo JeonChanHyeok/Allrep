@@ -32,5 +32,4 @@ public class Feedinginfo {
         this.feeding_month = feeding_month;
         this.feeding_day = feeding_day;
     }
-
 }

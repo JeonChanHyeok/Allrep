@@ -29,10 +29,6 @@ public class Fragment_dic_animal_info extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_home_dic_animalinfo,container,false);
-        //bundle.putString("middle_title",middle_title);
-        //                    bundle.putString("small_title",small_title);
-        //                    bundle.putString("animalName",animalName);
-
         String middle_title = getArguments().getString("middle_title");
         String small_title = getArguments().getString("small_title");
         String animalName = getArguments().getString("animalName");
@@ -41,10 +37,6 @@ public class Fragment_dic_animal_info extends Fragment {
         mImage = (ImageView) rootView.findViewById(R.id.dic_animal_img);
         mText_small = (TextView)rootView.findViewById(R.id.dic_animal_sub_explain);
         mText_large = (TextView)rootView.findViewById(R.id.dic_animal_explain);
-
-
-
-
         mDBReference.child("/Dic_info/").child(middle_title).child(small_title).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -69,13 +61,10 @@ public class Fragment_dic_animal_info extends Fragment {
                         bigstr.append("평균 수명 : " + getData[5] + "\n"+"\n");
                         mText_large.setText(bigstr);
                     }
-
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
         return rootView;

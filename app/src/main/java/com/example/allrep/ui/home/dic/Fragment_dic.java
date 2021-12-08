@@ -77,7 +77,6 @@ public class Fragment_dic extends Fragment {
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
                 }
             });
         }
@@ -92,12 +91,9 @@ public class Fragment_dic extends Fragment {
                         adapter.mItems.add(category.get(i));
                     }
                     mListView.setAdapter(adapter);
-
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
                 }
             });
         }
@@ -113,18 +109,12 @@ public class Fragment_dic extends Fragment {
                     }
                     mListView.setAdapter(adapter);
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
                 }
             });
-
         }else if (page == 3){
-
-
         }
-
         mListView.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -159,7 +149,6 @@ public class Fragment_dic extends Fragment {
                 }
             }
         });
-
         return rootView;
     }
 }
