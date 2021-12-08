@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/916/StudioProjects/Allrep/app/src/main/res/layout/fragment_home_dic.xml" value="0.321875" />
+        <entry key="..\:/Users/916/StudioProjects/Allrep/app/src/main/res/layout/fragment_home_dic_text.xml" value="0.321875" />
+        <entry key="..\:/Users/916/StudioProjects/Allrep/app/src/main/res/layout/fragment_home_feed.xml" value="0.321875" />
+        <entry key="..\:/Users/916/StudioProjects/Allrep/app/src/main/res/layout/fragment_homg_feed_list.xml" value="0.321875" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/activity_login.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/activity_main.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/activity_register.xml" value="0.5536458333333333" />
@@ -12,10 +16,9 @@
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/feeding_helper_feedinfo.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_bookmark.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_bookmark_animal.xml" value="0.5536458333333333" />
-        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_bookmark_list.xml" value="0.5" />
+        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_bookmark_list.xml" value="0.2111111111111111" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_community_list_text.xml" value="0.375" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_community_make_text.xml" value="0.375" />
-        <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_community_text.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_home.xml" value="0.2111111111111111" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_home_dic.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/HOME/AndroidStudioProjects/Allrep/app/src/main/res/layout/fragment_home_dic_animalinfo.xml" value="0.5536458333333333" />
