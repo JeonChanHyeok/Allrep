@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.allrep.MainActivity;
 import com.example.allrep.R;
 import com.example.allrep.userinfo.Animalinfo;
 import com.example.allrep.userinfo.Feedinginfo;
@@ -128,6 +129,10 @@ public class Add_Animal extends AppCompatActivity {
                                     }
                                     Toast.makeText(Add_Animal.this, "추가완료!", Toast.LENGTH_SHORT).show();
                                     finish();
+                                    MainActivity ma = new MainActivity();
+                                    ma.finish();
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
                                 }
                             });
                         }

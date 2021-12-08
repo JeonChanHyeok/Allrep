@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +19,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.allrep.AnimalViewModel;
 import com.example.allrep.FeedingViewModel;
 import com.example.allrep.LoginViewModel;
+import com.example.allrep.MainActivity;
 import com.example.allrep.R;
+import com.example.allrep.ui.home.dic.Fragment_dic;
 import com.example.allrep.ui.home.feed.fragment.List_checked;
 import com.example.allrep.userinfo.Animalinfo;
 import com.example.allrep.userinfo.Feedinginfo;
@@ -29,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fragment_feed extends Fragment {
+    Fragment_dic frd;
     private LoginViewModel loginViewModel;
     private AnimalViewModel animalViewModel;
     private FeedingViewModel feedingViewModel;
@@ -48,7 +52,7 @@ public class Fragment_feed extends Fragment {
         Button add = (Button)rootView.findViewById(R.id.add_animal);
         Intent intent = new Intent(this.getActivity(), Add_Animal.class);
         adapter = new Feed_list_adapter();
-
+        frd = new Fragment_dic();
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,10 +87,18 @@ public class Fragment_feed extends Fragment {
             public void onClick(View view) {
                 for(List_checked f : adapter.checklist){
                     if(f.checked){
-                        System.out.println(f.position + " checked");
+                        adapter.mItems1.get(f.position).update_feeding();
                     }
                 }
+                Toast.makeText(getContext(), "피딩완료!", Toast.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putString("middle_title","");
+                bundle.putString("small_title","");
+                bundle.putInt("page",0);
+                frd.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.container,frd).commit();
             }
+
         });
 
         return rootView;
@@ -131,25 +143,24 @@ public class Fragment_feed extends Fragment {
                                     }
                                 }
                                 System.out.println(adapter.mItems2.size());
-                                List<Animalinfo> temp_a = new ArrayList<>();
-                                List<Feedinginfo> temp_f = new ArrayList<>();
                                 Animalinfo temp1 = new Animalinfo();
                                 Feedinginfo temp2 = new Feedinginfo();
-                                for(int i = 0 ; i < adapter.mItems1.size() ; i++){
-                                    temp1 = adapter.mItems1.get(i);
-                                    temp2 = adapter.mItems2.get(i);
-                                    for(int j = i ; j < adapter.mItems1.size() ; j ++){
+
+                                for(int i = 0 ; i < adapter.mItems1.size()-1 ; i++){
+                                    for(int j = 0 ; j < adapter.mItems1.size()-i-1 ; j ++){
                                         try {
-                                            if(adapter.mItems2.get(j).getDate().compareTo(temp2.getDate())<=0){
+                                            if(adapter.mItems2.get(j).getDate().compareTo(adapter.mItems2.get(j+1).getDate())>0){
                                                 temp1 = adapter.mItems1.get(j);
                                                 temp2 = adapter.mItems2.get(j);
+                                                adapter.mItems1.set(j, adapter.mItems1.get(j+1));
+                                                adapter.mItems2.set(j, adapter.mItems2.get(j+1));
+                                                adapter.mItems1.set(j+1, temp1);
+                                                adapter.mItems2.set(j+1, temp2);
                                             }
                                         } catch (ParseException e) {
                                             e.printStackTrace();
                                         }
                                     }
-                                    temp_a.add(temp1);
-                                    temp_f.add(temp2);
                                 }
                                 mListView.setAdapter(adapter);
                             }
