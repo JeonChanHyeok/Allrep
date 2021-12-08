@@ -71,7 +71,11 @@ public class HomeFragment extends Fragment{
         });
 
 
-
+        Bundle bundle = new Bundle();
+        bundle.putString("middle_title","");
+        bundle.putString("small_title","");
+        bundle.putInt("page",0);
+        fragment_dic.setArguments(bundle);
         getFragmentManager().beginTransaction().add(R.id.container,fragment_dic).commit();
 
         tabs = (TabLayout)root.findViewById(R.id.tabs);
