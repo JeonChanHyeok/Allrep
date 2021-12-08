@@ -42,6 +42,7 @@ public class Add_Animal extends AppCompatActivity {
     DatabaseReference mDBReference;
     ImageView animal_img;
     Uri uri;
+    boolean addimg;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,8 +50,9 @@ public class Add_Animal extends AppCompatActivity {
         setContentView(R.layout.feeding_helper_animal_add);
         Intent intent = getIntent();
         id = intent.getStringExtra("userId");
+        addimg = false;
 
-        storage = FirebaseStorage.getInstance();
+        storage = FirebaseStorage.getInstance("gs://allrep-f0765.appspot.com");
         stref = storage.getReference();
         mDBReference = FirebaseDatabase.getInstance().getReference();
 
@@ -72,14 +74,6 @@ public class Add_Animal extends AppCompatActivity {
         EditText animal_what_eat = (EditText)findViewById(R.id.add_what_feeding);
         Button add = (Button)findViewById(R.id.add_feeding_helper_save);
 
-
-
-
-
-
-
-
-
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,16 +85,16 @@ public class Add_Animal extends AppCompatActivity {
                 int get_afg = Integer.parseInt(animal_feeding_gram.getText().toString());
                 String get_awe = animal_what_eat.getText().toString();
 
-
                 String imgName = id + "/" + get_an + ".jpg";
 
                 Animalinfo animal = new Animalinfo(id, get_an, get_aa, get_aj, imgName,get_afd, get_afg, get_ag, get_awe);
-                if (uri == null) {
-                    String appName = getResources().getResourceName(R.drawable.snake);
-                    uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.snake);
-                }
                 StorageReference riverRdf = stref.child("animal_imgs/"+imgName);
-                UploadTask uploadTask = riverRdf.putFile(uri);
+                UploadTask uploadTask;
+                if(addimg) uploadTask = riverRdf.putFile(uri);
+                else{
+                    Uri file = Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.snake);
+                    uploadTask = riverRdf.putFile(file);
+                }
                 uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -130,7 +124,7 @@ public class Add_Animal extends AppCompatActivity {
                                     Feedinginfo feedinginfo;
                                     for(int i=0; i < 10 ;i ++){
                                         feedinginfo= new Feedinginfo(i, id, get_an ,year, month, (day + i * animal.feeding_day));
-                                        mDBReference.child("/Fedding_time_info/").child(id).child(get_an).child(Integer.toString(i)).setValue(feedinginfo);
+                                        mDBReference.child("/Feeding_time_info/").child(id).child(get_an).child(Integer.toString(i)).setValue(feedinginfo);
                                     }
                                     Toast.makeText(Add_Animal.this, "추가완료!", Toast.LENGTH_SHORT).show();
                                     finish();
@@ -147,12 +141,6 @@ public class Add_Animal extends AppCompatActivity {
                 });
             }
         });
-
-
-
-
-
-
     }
 
     @Override
@@ -161,6 +149,9 @@ public class Add_Animal extends AppCompatActivity {
         if(requestCode == 0){
             Glide.with(getApplicationContext()).load(data.getData()).into(animal_img);
             uri = data.getData();
+            addimg = true;
         }
     }
+
+
 }

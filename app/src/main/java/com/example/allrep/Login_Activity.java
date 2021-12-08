@@ -2,6 +2,7 @@ package com.example.allrep;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +39,8 @@ public class Login_Activity extends AppCompatActivity {
         Button register_btn = (Button)findViewById(R.id.join_button);
         Intent intent = new Intent(this,Register_Activity.class);
 
+
+
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,12 +59,15 @@ public class Login_Activity extends AppCompatActivity {
                             , userInfo.get("share").toString(), userInfo.get("alram").toString()};
                             if (getData[0].equals(getId) && getData[1].equals(getPs)) {
                                 Toast.makeText(Login_Activity.this, "로그인완료!", Toast.LENGTH_SHORT).show();
-                                intent_main.putExtra("isLogin", true);
-                                intent_main.putExtra("userId", getData[0]);
-                                intent_main.putExtra("userPw", getData[1]);
-                                intent_main.putExtra("share", Integer.parseInt(getData[2]));
-                                intent_main.putExtra("alram", Integer.parseInt(getData[3]));
-                                ma.finish();
+                                //ma.finish();
+                                //자동로그인
+                                SharedPreferences auto = getSharedPreferences("autoLogin", Activity.MODE_PRIVATE);
+                                SharedPreferences.Editor autoLoginEdit = auto.edit();
+                                autoLoginEdit.putString("userId", getData[0]);
+                                autoLoginEdit.putString("userPs", getData[1]);
+                                autoLoginEdit.putInt("share", Integer.parseInt(getData[2]));
+                                autoLoginEdit.putInt("alram", Integer.parseInt(getData[3]));
+                                autoLoginEdit.commit();
                                 startActivity(intent_main);
                                 mDBReference.removeEventListener(this);
                                 finish();

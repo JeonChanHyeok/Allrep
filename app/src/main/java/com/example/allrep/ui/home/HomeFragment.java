@@ -1,7 +1,9 @@
 package com.example.allrep.ui.home;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -51,11 +53,16 @@ public class HomeFragment extends Fragment{
             public void onClick(View view) {
                 if(login_btn.getText().toString().equals("로그인")){
                     startActivity(intent);
+                    getActivity().finish();
                 }else{
                     PackageManager packageManager = getActivity().getPackageManager();
                     Intent intent = packageManager.getLaunchIntentForPackage(getActivity().getPackageName());
                     ComponentName componentName = intent.getComponent();
                     Intent mainIntent = Intent.makeRestartActivityTask(componentName);
+                    SharedPreferences auto = getActivity().getSharedPreferences("autoLogin", Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor autoLoginEdit = auto.edit();
+                    autoLoginEdit.clear();
+                    autoLoginEdit.commit();
                     startActivity(mainIntent);
                     System.exit(0);
                 }

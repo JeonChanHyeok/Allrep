@@ -59,7 +59,7 @@ public class Register_Activity extends AppCompatActivity {
                     return;
                 }
 
-                userInfo = new Userinfo(getUserId, getUserPs);
+                userInfo = new Userinfo(getUserId, getUserPs, "");
 
                 mDBReference.child("/User_info/").child(getUserId).child("userId").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -80,7 +80,6 @@ public class Register_Activity extends AppCompatActivity {
                                     Toast.makeText(Register_Activity.this, "가입실패!", Toast.LENGTH_SHORT).show();
                                 }
                             });
-
                         }
                     }
 

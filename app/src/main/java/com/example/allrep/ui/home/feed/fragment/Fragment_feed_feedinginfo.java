@@ -16,6 +16,9 @@ public class Fragment_feed_feedinginfo extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.feeding_helper_feedinfo,container,false);
+
+
+
         return rootView;
     }
 }

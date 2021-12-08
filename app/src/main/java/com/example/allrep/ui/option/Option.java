@@ -1,7 +1,9 @@
 package com.example.allrep.ui.option;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -105,7 +107,7 @@ public class Option extends Fragment {
                     Toast.makeText(getContext(), "비밀번호는 8글자 이상!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Userinfo user = new Userinfo(userID.getText().toString(),userPW.getText().toString(),selectedRadio,selectedCheck);
+                Userinfo user = new Userinfo(userID.getText().toString(),userPW.getText().toString(),selectedRadio,selectedCheck, "");
 
                 mDBReference.child("/User_info/").child(userID.getText().toString()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -115,6 +117,10 @@ public class Option extends Fragment {
                         Intent intent = packageManager.getLaunchIntentForPackage(getActivity().getPackageName());
                         ComponentName componentName = intent.getComponent();
                         Intent mainIntent = Intent.makeRestartActivityTask(componentName);
+                        SharedPreferences auto = getActivity().getSharedPreferences("autoLogin", Activity.MODE_PRIVATE);
+                        SharedPreferences.Editor autoLoginEdit = auto.edit();
+                        autoLoginEdit.clear();
+                        autoLoginEdit.commit();
                         startActivity(mainIntent);
                         System.exit(0);
                     }
