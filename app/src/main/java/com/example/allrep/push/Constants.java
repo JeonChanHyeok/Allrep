@@ -11,7 +11,7 @@ public class Constants {
     public static final String KOREA_TIMEZONE = "Asia/Seoul";
 
     // 챌린지 랭킹 시작 시각
-    public static final Integer A_MORNING_EVENT_TIME = 8;
+    public static final Integer A_MORNING_EVENT_TIME = 21; // 매일 오전 8시마다 푸시알림을 보내줌
     public static final Integer A_NIGHT_EVENT_TIME = 20;
     public static final Integer B_MORNING_EVENT_TIME = 9;
     public static final Integer B_NIGHT_EVENT_TIME = 21;

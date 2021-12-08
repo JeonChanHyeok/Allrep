@@ -63,7 +63,6 @@ public class Fragment_feed extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
         mListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);

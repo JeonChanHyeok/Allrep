@@ -54,7 +54,6 @@ public class Fragment_dic extends Fragment {
         mImage = (ImageView) rootView.findViewById(R.id.dic_animal_img);
         mText_small = (TextView)rootView.findViewById(R.id.dic_animal_sub_explain);
         mText_large = (TextView)rootView.findViewById(R.id.dic_animal_explain);
-        Button btn = (Button)rootView.findViewById(R.id.dic_button);
         fragment_dic = new Fragment_dic();
         fragment_dic_animal_info = new Fragment_dic_animal_info();
         category = new ArrayList<String>();

@@ -197,7 +197,6 @@ public class Feeding_helper extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String value = snapshot.getValue(String.class);
                         if (value != null) {
-                            Toast.makeText(Feeding_helper.this, "이미 추가된 동물 입니다!", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
                             mDBReference.child("/Animal_info/").child(userName).child(get_an).setValue(animal_temp).addOnSuccessListener(new OnSuccessListener<Void>() {

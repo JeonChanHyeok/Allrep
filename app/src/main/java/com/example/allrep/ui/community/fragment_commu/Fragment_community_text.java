@@ -124,6 +124,9 @@ public class Fragment_community_text extends Fragment {
                             int numberB = Integer.parseInt(number);
                             if (numberA == numberB){
                                 mDBReference.child("/community_info/").child(Integer.toString(numberA)).removeValue();
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("mycommu", 1);
+                                fragment_community_list.setArguments(bundle);
                                 getFragmentManager().beginTransaction().replace(R.id.community_container,fragment_community_list).commit();
                             }
                         }
