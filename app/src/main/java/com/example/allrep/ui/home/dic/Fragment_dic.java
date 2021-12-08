@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,13 +31,18 @@ import java.util.HashMap;
 
 public class Fragment_dic extends Fragment {
     Fragment_dic fragment_dic;
+    Fragment_dic_animal_info fragment_dic_animal_info;
     private ListView mListView;
     DatabaseReference mDBReference = null;
+    ImageView mImage;
+    TextView mText_small;
+    TextView mText_large;
     Fragment_dic_adapter1 adapter;
     ArrayList<String> category;
     String middle_title;
     String small_title;
     int page;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,8 +51,12 @@ public class Fragment_dic extends Fragment {
         adapter = new Fragment_dic_adapter1();
         Fragment_dic_adapter1 adapter = new Fragment_dic_adapter1();
         mListView = (ListView) rootView.findViewById(R.id.diction_category);
+        mImage = (ImageView) rootView.findViewById(R.id.dic_animal_img);
+        mText_small = (TextView)rootView.findViewById(R.id.dic_animal_sub_explain);
+        mText_large = (TextView)rootView.findViewById(R.id.dic_animal_explain);
         Button btn = (Button)rootView.findViewById(R.id.dic_button);
         fragment_dic = new Fragment_dic();
+        fragment_dic_animal_info = new Fragment_dic_animal_info();
         category = new ArrayList<String>();
         page = 0;
         page = getArguments().getInt("page");
@@ -82,9 +93,6 @@ public class Fragment_dic extends Fragment {
                     }
                     mListView.setAdapter(adapter);
 
-
-
-
                 }
 
                 @Override
@@ -104,10 +112,6 @@ public class Fragment_dic extends Fragment {
                         adapter.mItems.add(category.get(i));
                     }
                     mListView.setAdapter(adapter);
-
-
-
-
                 }
 
                 @Override
@@ -115,6 +119,10 @@ public class Fragment_dic extends Fragment {
 
                 }
             });
+
+        }else if (page == 3){
+
+
         }
 
         mListView.setOnItemClickListener(new ListView.OnItemClickListener() {
@@ -129,7 +137,7 @@ public class Fragment_dic extends Fragment {
                    fragment_dic.setArguments(bundle);
                    getFragmentManager().beginTransaction().replace(R.id.container,fragment_dic).commit();
                 }
-                else if(page ==1){
+                else if(page == 1){
                     small_title = adapter.mItems.get(i);
                     Bundle bundle = new Bundle();
                     bundle.putString("middle_title",middle_title);
@@ -137,6 +145,16 @@ public class Fragment_dic extends Fragment {
                     bundle.putInt("page",2);
                     fragment_dic.setArguments(bundle);
                     getFragmentManager().beginTransaction().replace(R.id.container,fragment_dic).commit();
+
+                }
+                else if(page == 2){
+                    String animalName = adapter.mItems.get(i);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("middle_title",middle_title);
+                    bundle.putString("small_title",small_title);
+                    bundle.putString("animalName",animalName);
+                    fragment_dic_animal_info.setArguments(bundle);
+                    getFragmentManager().beginTransaction().replace(R.id.container,fragment_dic_animal_info).commit();
 
                 }
             }
